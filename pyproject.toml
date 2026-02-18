@@ -51,7 +51,6 @@ dependencies = [
     "soxr==0.3.7",
 
     # ── Vision ────────────────────────────────────────────────────────────────────
-    "opencv-python==4.10.0.84",
     "opencv-contrib-python==4.10.0.84",
     "pillow==10.4.0",
     "imageio==2.34.2",
