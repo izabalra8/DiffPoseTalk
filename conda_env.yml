@@ -1,0 +1,108 @@
+name: diffposetalk
+# Install:
+#   conda env create -f conda_env.yml
+#   conda activate diffposetalk
+#
+# Generated from setup/requirements.txt (conda explicit list format).
+# System C/C++ libraries (_libgcc_mutex, libboost, libblas, etc.) are
+# managed by conda automatically and are NOT listed here.
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  # ── Core runtime ─────────────────────────────────────────────────────
+  - python=3.8
+  - pip
+  - setuptools>=65        # needed to build legacy packages (chumpy)
+  - wheel
+
+  # numpy: conda build gives better binary compatibility with numba/scipy
+  - numpy=1.24.4
+
+  # ── PyTorch + CUDA 12.1 (via pytorch channel) ────────────────────────
+  - pytorch=2.4.0
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+
+  # ── All other Python deps (pip) ──────────────────────────────────────
+  - pip:
+    # numerics / ML
+    - scipy==1.10.1
+    - scikit-learn==1.3.2
+    - numba==0.58.1
+    - llvmlite==0.41.1      # must match numba version
+    - sympy==1.13.1
+    - mpmath==1.3.0
+    - networkx==3.1
+
+    # audio
+    - librosa==0.10.2.post1
+    - soundfile==0.12.1
+    - soxr==0.3.7
+    - audioread==3.0.1
+    - pooch==1.8.2          # used by librosa for sample-data download
+
+    # vision / image
+    - imageio==2.34.2
+    - pillow==10.4.0
+    - opencv-contrib-python==4.10.0.84   # includes opencv-python
+
+    # HuggingFace stack
+    - transformers==4.44.0
+    - tokenizers==0.19.1
+    - safetensors==0.4.4
+    - huggingface-hub==0.24.5
+
+    # 3-D / rendering
+    - trimesh==4.4.3
+    - pyrender==0.1.45      # pulls pyopengl==3.1.0 automatically; do NOT pin pyopengl here
+    - pyglet==2.0.16
+    - freetype-py==2.4.0
+
+    # FLAME / mesh
+    # psbody-mesh is NOT on PyPI; install from source: https://github.com/MPI-IS/mesh
+    - chumpy==0.70          # legacy FLAME dependency; setuptools must be present first
+
+    # plotting
+    - matplotlib==3.7.5
+
+    # utilities
+    - tqdm==4.66.5
+    - pyyaml==6.0.2
+    - requests==2.32.3
+    - packaging==24.1
+    - filelock==3.15.4
+    - fsspec==2024.6.1
+    - jinja2==3.1.4
+    - msgpack==1.0.8
+    - pyzmq==26.1.0
+    - regex==2024.7.24
+    - six==1.16.0
+    - decorator==5.1.1
+    - joblib==1.4.2
+    - threadpoolctl==3.5.0
+    - lazy-loader==0.4
+    - typing-extensions==4.12.2
+    - importlib-metadata==8.2.0
+    - importlib-resources==6.4.0
+    - platformdirs==4.2.2
+    - zipp==3.19.2
+
+    # HTTP / crypto
+    - certifi==2024.7.4
+    - charset-normalizer==3.3.2
+    - idna==3.7
+    - urllib3==2.2.2
+    - cffi==1.17.0
+    - pycparser==2.22
+
+    # matplotlib extras (pulled transitively, but pin for reproducibility)
+    - cycler==0.12.1
+    - kiwisolver==1.4.5
+    - contourpy==1.1.1
+    - fonttools==4.53.1
+    - pyparsing==3.1.2
+    - python-dateutil==2.9.0.post0
